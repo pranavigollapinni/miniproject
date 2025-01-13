@@ -1,0 +1,36 @@
+<?php
+// Check if the form is submitted
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Check if image file is uploaded
+    if (isset($_FILES["image"]) && $_FILES["image"]["error"] == 0) {
+        // Specify target directory to upload the image
+        $target_dir = "uploads/";
+        // Generate a unique name for the uploaded file to prevent overwriting existing files
+        $target_file = $target_dir . uniqid() . '_' . basename($_FILES["image"]["name"]);
+        // Check if the file is an actual image
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+        if (getimagesize($_FILES["image"]["tmp_name"]) !== false) {
+            // Check if the file already exists
+            if (file_exists($target_file)) {
+                echo "Sorry, the file already exists.";
+            } else {
+                // Upload the file to the specified directory
+                if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+                    echo "The file " . htmlspecialchars(basename($_FILES["image"]["name"])) . " has been uploaded.";
+                } else {
+                    echo "Sorry, there was an error uploading your file.";
+                }
+            }
+        } else {
+            echo "File is not an image.";
+        }
+    } else {
+        echo "No image file uploaded.";
+    }
+
+    // Process feedback
+    $feedback = $_POST["feedback"];
+    // You can process the feedback here, such as saving it to a database
+    echo "Feedback: " . htmlspecialchars($feedback);
+}
+?>
