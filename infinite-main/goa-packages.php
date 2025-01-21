@@ -54,16 +54,6 @@ include 'db.php';
         .package-info li {
             margin: 5px 0;
         }
-        .accommodation-info {
-            margin-top: 20px;
-            padding: 15px;
-            background-color: #eef4f7;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-        }
-        .accommodation-info h4 {
-            margin-bottom: 10px;
-        }
     </style>
 </head>
 <body>
@@ -83,7 +73,6 @@ include 'db.php';
                 "title" => "5 Days, 4 Nights",
                 "nights" => 4,
                 "price" => 20000,
-                "hotel" => ["name" => "Hotel Sea View", "price" => 4000, "persons" => 2],
                 "attractions" => [
                     "Beaches" => ["Baga Beach", "Calangute Beach", "Dudhsagar Waterfalls"],
                     "Historical Sites" => ["Fort Aguada", "Old Goa Churches"],
@@ -94,19 +83,45 @@ include 'db.php';
                 "title" => "7 Days, 6 Nights",
                 "nights" => 6,
                 "price" => 30000,
-                "hotel" => ["name" => "Grand Goa Resort", "price" => 7000, "persons" => 2],
                 "attractions" => [
                     "Beaches" => ["Baga Beach", "Calangute Beach"],
                     "Historical Sites" => ["Fort Aguada", "Old Goa Churches"],
                     "Local Markets" => ["Goa Markets"]
                 ]
             ],
-            // Add more packages as needed...
+            [
+                "title" => "3 Days, 2 Nights",
+                "nights" => 2,
+                "price" => 15000,
+                "attractions" => [
+                    "Beaches" => ["Anjuna Beach", "Vagator Beach"],
+                    "Activities" => ["Parasailing", "Jet Skiing"],
+                    "Dining" => ["Seafood Experience"]
+                ]
+            ],
+            [
+                "title" => "10 Days, 9 Nights",
+                "nights" => 9,
+                "price" => 50000,
+                "attractions" => [
+                    "Beaches" => ["Morjim Beach", "Ashwem Beach", "Palolem Beach"],
+                    "Adventure" => ["Scuba Diving", "Snorkeling"],
+                    "Cultural Experiences" => ["Local Festivals", "Traditional Dance Shows"]
+                ]
+            ],
+            [
+                "title" => "Weekend Getaway",
+                "nights" => 1,
+                "price" => 8000,
+                "attractions" => [
+                    "Beaches" => ["Miramar Beach"],
+                    "Dining" => ["Local Goan Cuisine"]
+                ]
+            ]
         ];
 
         foreach ($packages as $package) {
-            $accommodationCost = $package['hotel']['price'] * $package['nights'];
-            $totalCost = $package['price'] + $accommodationCost;
+            $totalCost = $package['price'];
 
             // Count total attractions
             $totalAttractions = 0;
@@ -131,12 +146,6 @@ include 'db.php';
                 echo "</li>";
             }
             echo "</ul>";
-
-            echo "<h4>Accommodation Details:</h4>";
-            echo "<div class='accommodation-info'>";
-            echo "<p><strong>Hotel:</strong> {$package['hotel']['name']}</p>";
-            echo "<p><strong>Total Accommodation Cost:</strong> ₹" . number_format($accommodationCost) . " for {$package['nights']} nights (for up to {$package['hotel']['persons']} persons)</p>";
-            echo "</div>";
             echo "</section>";
         }
         ?>

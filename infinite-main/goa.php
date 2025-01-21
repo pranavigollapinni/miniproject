@@ -1,13 +1,10 @@
-<?php
-include 'db.php';
-?>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Goa Packages</title>
+    <title>Explore Goa</title>
     <link href="css/styles.css" rel="stylesheet">
     <style>
         body {
@@ -47,20 +44,22 @@ include 'db.php';
         .info-section h2 {
             margin-bottom: 15px;
         }
+        .register-button {
+            margin-top: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="sidebar">
         <h2>Menu</h2>
-        <a href="goa-packages.php">Packages</a> <!-- Link to goa-packages.php -->
-        <a href="#rooms" id="link-rooms">Hotels</a>
+        <a href="goa-packages.php">Packages</a>
+        <a href="hotels.php">Hotels</a>
     </div>
     <div class="content">
         <header>
             <h1>Explore Goa</h1>
         </header>
 
-        <!-- Goa Information Section -->
         <section class="info-section">
             <h2>About Goa</h2>
             <p>Goa, located on the western coast of India, is renowned for its stunning beaches, vibrant nightlife, and rich cultural heritage. It's a perfect destination for travelers seeking a mix of relaxation and adventure.</p>
@@ -82,14 +81,9 @@ include 'db.php';
                 <li>Exploring Goan markets</li>
             </ul>
         </section>
-    </div>
 
-    <script>
-        // Smooth scrolling for sidebar links
-        document.getElementById("link-rooms").addEventListener("click", function (event) {
-            event.preventDefault();
-            document.getElementById("rooms").scrollIntoView({ behavior: "smooth" });
-        });
-    </script>
+        <!-- Register Button -->
+        <a href="register.php" class="btn btn-primary register-button">Register</a>
+    </div>
 </body>
 </html>
